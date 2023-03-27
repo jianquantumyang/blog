@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title%}
+{{ title }}
+{% endblock %}
+
+
+<!--Main Content-->
+{% block content %}
+
+    {% for el in posts %}
+        {% if el.is_published %}
+            {% if el.photo %}
+            <img src="/media/{{el.photo}}" alt="{{photo}}" class="img-article-left thumb img-ars" />
+            {% endif %}
+            <a href="{% url 'post' el.pk %}" class="p-2 text-dark"><h2>{{ el.title }}</h2></a>
+            <h6>{{ el.content|linebreaks|truncatewords:50 }}</h6>
+
+            <h5>Катеогория: {{ el.cat }}</h5>
+            <h5>{{ el.time_update|date:"d-m-Y H-i-s" }}</h5>
+            <a href="{% url 'post' el.pk %}" class="p-2 text-dark"><button class="btn btn-primary float-right ">Читать пост</button></a>
+            <hr class="mt-4">
+            {% endif %}
+    {% endfor %}
+{% endblock %}
+<!--End Main Content-->

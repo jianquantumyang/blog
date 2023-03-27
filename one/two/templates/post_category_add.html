@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title%}
+{{ title }}
+{% endblock %}
+
+
+<!--Main Content-->
+{% block content %}
+    <h1>Добавление категории</h1>
+    <form method="post">
+        {% csrf_token %}
+        <p><label class="form-label" for="{{ form.id_for_label }}">{{ form.name.label }}: </label>{{ form.name }}</p>
+        <button class="btn btn-success" type="submit">Добавить</button>
+    </form>
+{% endblock %}
+<!--End Main Content-->
